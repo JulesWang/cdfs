@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Jules Wang">
+
+    <title>
+        Comparsion of Distribute File Systems
+    </title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="./bootstrap.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container">
+      <div role="navigation" class="navbar navbar-default">
+        <div class="navbar-header">
+          <button data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle" type="button">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="#" class="navbar-brand">Distribute File System</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+<!--
+            <li class="active"><a href="#">Link</a></li>
+            <li><a href="#">Link</a></li>
+            <li><a href="#">Link</a></li>
+            <li class="dropdown">
+              <a data-toggle="dropdown" class="dropdown-toggle" href="#">Dropdown <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="active"><a href="./">Default</a></li>
+            <li><a href="../navbar-static-top/">Static top</a></li>
+            <li><a href="../navbar-fixed-top/">Fixed top</a></li>
+          </ul>
+-->
+        </div><!--/.nav-collapse -->
+      </div>
+      <table class="table table-hover text-center" style="margin-bottom:99.90135px;">
+        <thead>
+          <tr>
+            <th></th>
+            <th><a href="#ceph">Ceph</a></th>
+            <th><a href="#gfs">GoogleFS</a></th>
+            <th><a href="#gpfs">GPFS</a></th>
+            <th><a href="#glusterfs">Glusterfs</a></th>
+            <th><a href="#hdfs">HDFS</a></th>
+            <th><a href="#lustre">Lustre</a></th>
+            <th><a href="#TFS">TFS</a></th>
+            <th><a href="#sheepdog">SheepDog</a></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Design Goal</td>
+            <td>General</td>
+            <td>Data-intensive App</td>
+            <td>Large Files</td>
+            <td>General</td>
+            <td>Large Files</td>
+            <td>Large Files</td>
+            <td>Small files</td>
+            <td>QEMU</td>
+          </tr>
+          <tr>
+            <td>Meta Data</td>
+            <td>Centralized</td>
+            <td>Centralized</td>
+            <td>Distribute</td>
+            <td>Distribute</td>
+            <td>Centralized</td>
+            <td>Centralized</td>
+            <td>Centralized</td>
+            <td>Distribute</td>
+          </tr>
+          <tr>
+            <td>Data Distribution</td>
+            <td>CRUSH</td>
+            <td>Mapping By Master</td>
+            <td>Active File Management</td>
+            <td>Elastic Hashing</td>
+            <td>Mapping By NameNode</td>
+            <td>Mapping By Metadata Server</td>
+            <td>Mapping By NameServer</td>
+            <td>Consistent Hashing</td>
+          </tr>
+          <tr>
+            <td>Data Replication</td>
+            <td>Primary-copy</td>
+            <td>Control Flow:Primary-copy<br>Data Flow:Pipeline</td>
+            <td></td>
+            <td>Direct</td>
+            <td>Pipeline</td>
+            <td></td>
+            <td>Primary-copy</td>
+            <td>Direct</td>
+          </tr>
+          <tr>
+            <td>Data Consistency</td>
+            <td></td>
+            <td>Relaxed Consistency</td>
+            <td>Distributed Byte‐range Locking;<br>
+                Centralized Management</td>
+            <td>Byte-range Locking</td>
+            <td>Write-once-read-many<br>One writer at a time</td>
+            <td>Distributed Lock Manager</td>
+            <td>One writer at a time</td>
+            <td>One writer at a time</td>
+          </tr>
+<!--
+          <tr>
+            <td>CAP</td>
+            <td></td>
+            <td></td>
+            <td>CP</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+-->
+
+          <tr>
+            <td>Written in</td>
+            <td>C++</td>
+            <td>C++</td>
+            <td>C++</td>
+            <td>C</td>
+            <td>Java</td>
+            <td>C</td>
+            <td>C++</td>
+            <td>C</td>
+          </tr>
+          <tr>
+            <td>Belongs to</td>
+            <td>Inktank</td>
+            <td>Google</td>
+            <td>IBM</td>
+            <td>Redhat</td>
+            <td>Apache</td>
+            <td>OpenSFS</td>
+            <td>TaoBao</td>
+            <td>NTT</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="list-group" id="ceph">
+        <a href="#" class="list-group-item active">Ceph</a>
+      <a href="http://ceph.com/docs/master/architecture/" class="list-group-item">Architecture</a>
+      <a href="http://www.ssrc.ucsc.edu/Papers/weil-osdi06.pdf" class="list-group-item">Ceph: A Scalable, High-Performance Distributed File System</a>
+      <a href="http://storageconference.org/2012/Presentations/T02.Weil.pdf" class="list-group-item">Ceph: Distributed Storage For Cloud Infrastructure</a>
+      </div>
+
+      <div class="list-group" id="gfs">
+        <a href="#" class="list-group-item active">GoogleFS</a>
+        <a href="http://static.googleusercontent.com/media/research.google.com/zh-CN//archive/gfs-sosp2003.pdf" class="list-group-item">The Google File System</a>
+        <a href="http://www.stroustrup.com/applications.html" class="list-group-item">C++ Applications by Bjarne Stroustrup</a>
+      </div>
+      <div class="list-group" id="gpfs">
+        <a href="#" class="list-group-item active">GPFS</a>
+        <a href="https://www.usenix.org/legacy/events/fast02/full_papers/schmuck/schmuck.pdf" class="list-group-item">GPFS: A Shared-Disk File System for Large Computing Clusters</a>
+        <a href="http://www-03.ibm.com/systems/jo/resources/introduction-to-gpfs-3-5.pdf" class="list-group-item">An Introduction to GPFS Version 3.5</a>
+      </div>
+
+      <div class="list-group" id="glustefs">
+        <a href="#" class="list-group-item active">Glusterfs</a>
+        <a href="http://hekafs.org/index.php/2012/03/glusterfs-algorithms-replication-present/" class="list-group-item">GlusterFS Algorithms: Replication</a>
+      </div>
+      <div class="list-group" id="hdfs">
+        <a href="#" class="list-group-item active">HDFS</a>
+        <a href="http://hadoop.apache.org/docs/r1.2.1/hdfs_design.html" class="list-group-item">HDFS Architecture Guide</a>
+	<a href="http://www.ibm.com/developerworks/library/wa-introhdfs/" class="list-group-item">An introduction to the Hadoop Distributed File System</a>
+      </div>
+      <div class="list-group" id="lustre">
+        <a href="#" class="list-group-item active">Lustre</a>
+        <a href="http://wiki.lustre.org/images/d/da/Understanding_Lustre_Filesystem_Internals.pdf" class="list-group-item">Understanding Lustre Filesystem Internals</a>
+      </div>
+      <div class="list-group" id="tfs">
+        <a href="#" class="list-group-item active">TFS</a>
+        <a href="http://code.taobao.org/p/tfs/wiki/intro/" class="list-group-item">Taobao File System</a>
+      </div>
+      <div class="list-group" id="sheepdog">
+        <a href="#" class="list-group-item active">SheepDog</a>
+        <a href="http://www.linux-kvm.org/wiki/images/8/8d/2010-forum-sheepdog.pdf" class="list-group-item">Sheepdog: distributed storage system for QEMU</a>
+      </div>
+  </body>
+<!--
+  <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+  <script src="./bootstrap.min.js"></script>
+-->
+</html>
+
