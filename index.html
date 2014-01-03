@@ -114,22 +114,21 @@
             <td>Direct</td>
             <td>Pipeline</td>
             <td></td>
-            <td>Primary-copy</td>
+            <td>Direct</td>
             <td>Direct</td>
             <td>Direct</td>
           </tr>
           <tr>
-            <td>Data Consistency</td>
-            <td></td>
+            <td>Data Coherence</td>
+            <td>Logging and Recovery</td>
             <td>Relaxed Consistency</td>
-            <td>Distributed Byte‐range Locking;<br>
-                Centralized Management</td>
-            <td>Byte-range Locking</td>
-            <td>Write-once-read-many<br>One writer at a time</td>
-            <td>Distributed Lock Manager</td>
-            <td>One writer at a time</td>
-            <td>One writer at a time</td>
-            <td></td>
+            <td>Logging and Recovery</td>
+            <td>Logging and Recovery named Self-heal</td>
+            <td>Write-once</td>
+            <td>Logging and Recovery</td>
+            <td>Write-once</td>
+            <td>Version of node membership</td>
+            <td>W+R&lt;N<br>W&lt;N/2</td>
           </tr>
 <!--
           <tr>
@@ -166,7 +165,7 @@
             <td>✔</td>
             <td>✔</td>
             <td>✔</td>
-            <td>✔</td>
+            <td>with tfstool</td>
             <td></td>
             <td></td>
           </tr>
